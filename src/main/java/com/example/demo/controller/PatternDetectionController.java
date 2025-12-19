@@ -2,41 +2,27 @@ package com.example.demo.controller;
 
 import com.example.demo.model.PatternDetectionResult;
 import com.example.demo.service.PatternDetectionService;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/patterns")
-public class PatternDetectionResultController {
+public class PatternDetectionController {
 
-    private final PatternDetectionService patternDetectionService;
+    private final PatternDetectionService service;
 
-    public PatternDetectionResultController(
-            PatternDetectionService patternDetectionService) {
-        this.patternDetectionService = patternDetectionService;
+    public PatternDetectionController(PatternDetectionService service) {
+        this.service = service;
     }
 
-    @PostMapping("/{zoneId}")
-    public ResponseEntity<PatternDetectionResult> detectPattern(
-            @PathVariable Long zoneId) {
-
-        PatternDetectionResult result =
-                patternDetectionService.detectPattern(zoneId);
-
-        return new ResponseEntity<>(result, HttpStatus.CREATED);
+    @PostMapping("/detect/{zoneId}")
+    public PatternDetectionResult detect(@PathVariable Long zoneId) {
+        return service.detectPattern(zoneId);
     }
-    @GetMapping("/{zoneId}")
-    public ResponseEntity<List<PatternDetectionResult>> getResults(
-            @PathVariable Long zoneId) {
 
-        List<PatternDetectionResult> results =
-                patternDetectionService.getResultsByZone(zoneId);
-
-        return new ResponseEntity<>(results, HttpStatus.OK);
+    @GetMapping("/zone/{zoneId}")
+    public List<PatternDetectionResult> get(@PathVariable Long zoneId) {
+        return service.getResultsByZone(zoneId);
     }
 }
-
-
