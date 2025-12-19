@@ -3,21 +3,25 @@ package com.example.demo.model;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "hotspot_zones")
 public class HotspotZone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(unique = true)
     private String zoneName;
+
     private Double centerLat;
     private Double centerLong;
     private String severityLevel;
 
+
     public Long getId() {
         return id;
     }
-    
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -25,7 +29,7 @@ public class HotspotZone {
     public String getZoneName() {
         return zoneName;
     }
-    
+
     public void setZoneName(String zoneName) {
         this.zoneName = zoneName;
     }
@@ -54,13 +58,13 @@ public class HotspotZone {
         this.severityLevel = severityLevel;
     }
     public HotspotZone() {
+        
     }
 
-    public HotspotZone(Long id, String zoneName,Double centerLat, Double centerLong, String severityLevel) {
-        this.id = id;
+    public HotspotZone(String zoneName, Double centerLat, Double centerLong) {
         this.zoneName = zoneName;
         this.centerLat = centerLat;
         this.centerLong = centerLong;
-        this.severityLevel = severityLevel;
+        this.severityLevel = "LOW";
     }
 }

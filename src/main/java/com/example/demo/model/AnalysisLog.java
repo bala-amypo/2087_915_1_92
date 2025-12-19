@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "analysis_logs")
 public class AnalysisLog {
 
     @Id
@@ -15,11 +16,11 @@ public class AnalysisLog {
 
     @ManyToOne
     private HotspotZone zone;
-   
+
     public Long getId() {
         return id;
     }
-    
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -27,7 +28,7 @@ public class AnalysisLog {
     public String getMessage() {
         return message;
     }
-    
+
     public void setMessage(String message) {
         this.message = message;
     }
@@ -51,12 +52,13 @@ public class AnalysisLog {
         
     }
 
-   
-    public AnalysisLog(Long id, String message,LocalDateTime loggedAt, HotspotZone zone) {
-        this.id = id;
+
+    public AnalysisLog(String message, HotspotZone zone) {
         this.message = message;
-        this.loggedAt = loggedAt;
         this.zone = zone;
     }
+    @PrePersist
+    void logTime() {
+        loggedAt = LocalDateTime.now();
+    }
 }
-

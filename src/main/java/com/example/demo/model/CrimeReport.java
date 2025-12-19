@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "crime_reports")
 public class CrimeReport {
 
     @Id
@@ -15,6 +16,18 @@ public class CrimeReport {
     private Double latitude;
     private Double longitude;
     private LocalDateTime occurredAt;
+
+    public CrimeReport() {
+
+    }
+
+    public CrimeReport(String crimeType, String description,Double latitude, Double longitude,LocalDateTime occurredAt) {
+        this.crimeType = crimeType;
+        this.description = description;
+        this.latitude = latitude;
+        this.longitude = longitude;
+        this.occurredAt = occurredAt;
+    }
 
     public Long getId() {
         return id;
@@ -35,7 +48,7 @@ public class CrimeReport {
     public String getDescription() {
         return description;
     }
-    
+
     public void setDescription(String description) {
         this.description = description;
     }
@@ -43,7 +56,7 @@ public class CrimeReport {
     public Double getLatitude() {
         return latitude;
     }
-    
+
     public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
@@ -51,7 +64,7 @@ public class CrimeReport {
     public Double getLongitude() {
         return longitude;
     }
-    
+
     public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
@@ -63,16 +76,4 @@ public class CrimeReport {
     public void setOccurredAt(LocalDateTime occurredAt) {
         this.occurredAt = occurredAt;
     }
-     public CrimeReport() {
-    }
-
-    public CrimeReport(Long id, String crimeType, String description,Double latitude, Double longitude, LocalDateTime occurredAt) {
-        this.id = id;
-        this.crimeType = crimeType;
-        this.description = description;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.occurredAt = occurredAt;
-    }
 }
-

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 
 @Entity
+@Table(name = "pattern_detection_results")
 public class PatternDetectionResult {
 
     @Id
@@ -20,7 +21,7 @@ public class PatternDetectionResult {
     public Long getId() {
         return id;
     }
-    
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -56,12 +57,11 @@ public class PatternDetectionResult {
     public void setDetectedPattern(String detectedPattern) {
         this.detectedPattern = detectedPattern;
     }
-     public PatternDetectionResult() {
-        
+    public PatternDetectionResult() {
+
     }
 
-    public PatternDetectionResult(Long id, HotspotZone zone,LocalDate analysisDate,Integer crimeCount,String detectedPattern) {
-        this.id = id;
+    public PatternDetectionResult(HotspotZone zone,LocalDate analysisDate,Integer crimeCount,String detectedPattern) {
         this.zone = zone;
         this.analysisDate = analysisDate;
         this.crimeCount = crimeCount;
