@@ -66,8 +66,7 @@ public class CrimeReport {
      public CrimeReport() {
     }
 
-    public CrimeReport(Long id, String crimeType, String description,
-                       Double latitude, Double longitude, LocalDateTime occurredAt) {
+    public CrimeReport(Long id, String crimeType, String description,Double latitude, Double longitude, LocalDateTime occurredAt) {
         this.id = id;
         this.crimeType = crimeType;
         this.description = description;

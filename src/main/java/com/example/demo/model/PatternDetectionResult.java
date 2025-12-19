@@ -60,10 +60,7 @@ public class PatternDetectionResult {
         
     }
 
-    public PatternDetectionResult(Long id, HotspotZone zone,
-                                  LocalDate analysisDate,
-                                  Integer crimeCount,
-                                  String detectedPattern) {
+    public PatternDetectionResult(Long id, HotspotZone zone,LocalDate analysisDate,Integer crimeCount,String detectedPattern) {
         this.id = id;
         this.zone = zone;
         this.analysisDate = analysisDate;

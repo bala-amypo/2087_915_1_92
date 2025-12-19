@@ -52,8 +52,7 @@ public class AnalysisLog {
     }
 
    
-    public AnalysisLog(Long id, String message,
-                       LocalDateTime loggedAt, HotspotZone zone) {
+    public AnalysisLog(Long id, String message,LocalDateTime loggedAt, HotspotZone zone) {
         this.id = id;
         this.message = message;
         this.loggedAt = loggedAt;
