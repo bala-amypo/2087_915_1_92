@@ -52,7 +52,6 @@ public class AnalysisLog {
         
     }
 
-
     public AnalysisLog(String message, HotspotZone zone) {
         this.message = message;
         this.zone = zone;
