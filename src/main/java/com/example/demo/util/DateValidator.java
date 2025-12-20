@@ -1,16 +1,13 @@
 package com.example.demo.util;
 
-import java.time.LocalDate;
+
+import java.time.LocalDateTime;
+
 
 public class DateValidator {
-
-    private DateValidator() {
-    }
-
-    public static boolean isValidDate(LocalDate date) {
-        if (date == null) {
-            return false;
-        }
-        return !date.isAfter(LocalDate.now());
-    }
+public static void validatePast(LocalDateTime time) {
+if (time.isAfter(LocalDateTime.now())) {
+throw new IllegalArgumentException("Time cannot be in future");
+}
+}
 }
