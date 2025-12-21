@@ -8,3 +8,4 @@ public interface HotspotZoneRepository
 
     HotspotZone findByZoneName(String zoneName);
 }
+
