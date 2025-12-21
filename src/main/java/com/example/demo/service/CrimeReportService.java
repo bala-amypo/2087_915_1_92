@@ -9,3 +9,4 @@ public interface CrimeReportService {
 
     List<CrimeReport> getAllReports();
 }
+
