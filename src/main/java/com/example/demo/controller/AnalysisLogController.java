@@ -7,11 +7,12 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
+
 @RestController
 @RequestMapping("/logs")
 public class AnalysisLogController {
 
-    private final AnalysisLogService service;
+    private final AnalysisLogService service;   
 
     public AnalysisLogController(AnalysisLogService service) {
         this.service = service;
