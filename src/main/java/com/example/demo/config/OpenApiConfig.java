@@ -10,7 +10,7 @@ import java.util.List;
 public class OpenApiConfig {
 
     @Bean
-    public OpenAPI customOpenAPI() {
+    public OpenAPI customOpenAPI() {88
         return new OpenAPI()
                 .servers(List.of(
                         new Server().url("https://9410.pro604cr.amypo.ai/")
