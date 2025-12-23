@@ -6,25 +6,27 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
-
 @RestController
-@RequestMapping("/logs")
+@RequestMapping("/analysis-logs")
 public class AnalysisLogController {
 
-    private final AnalysisLogService service;   
+    private final AnalysisLogService service;
 
     public AnalysisLogController(AnalysisLogService service) {
         this.service = service;
     }
 
-    @PostMapping("/{zoneId}")
-    public AnalysisLog add(@PathVariable Long zoneId, @RequestBody String message) {
+
+    @PostMapping("/add")
+    public AnalysisLog addLog(
+            @RequestParam Long zoneId,
+            @RequestParam String message) {
+
         return service.addLog(zoneId, message);
     }
 
     @GetMapping("/zone/{zoneId}")
-    public List<AnalysisLog> get(@PathVariable Long zoneId) {
+    public List<AnalysisLog> getLogsByZone(@PathVariable Long zoneId) {
         return service.getLogsByZone(zoneId);
     }
 }
