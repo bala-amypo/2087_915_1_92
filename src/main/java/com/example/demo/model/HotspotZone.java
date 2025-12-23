@@ -1,29 +1,24 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import java.util.List;
 
 @Entity
-@Table(name = "hotspot_zones")
 public class HotspotZone {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
     private String zoneName;
 
-    private Double centerLat;
-    private Double centerLong;
-    private String severityLevel;
+    // ✅ One Zone → Many CrimeReports
+    @OneToMany(mappedBy = "zone", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<CrimeReport> crimeReports;
 
-
+    // ===== GETTERS & SETTERS =====
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getZoneName() {
@@ -34,37 +29,11 @@ public class HotspotZone {
         this.zoneName = zoneName;
     }
 
-    public Double getCenterLat() {
-        return centerLat;
+    public List<CrimeReport> getCrimeReports() {
+        return crimeReports;
     }
 
-    public void setCenterLat(Double centerLat) {
-        this.centerLat = centerLat;
-    }
-
-    public Double getCenterLong() {
-        return centerLong;
-    }
-
-    public void setCenterLong(Double centerLong) {
-        this.centerLong = centerLong;
-    }
-
-    public String getSeverityLevel() {
-        return severityLevel;
-    }
-
-    public void setSeverityLevel(String severityLevel) {
-        this.severityLevel = severityLevel;
-    }
-    public HotspotZone() {
-        
-    }
-
-    public HotspotZone(String zoneName, Double centerLat, Double centerLong) {
-        this.zoneName = zoneName;
-        this.centerLat = centerLat;
-        this.centerLong = centerLong;
-        this.severityLevel = "LOW";
+    public void setCrimeReports(List<CrimeReport> crimeReports) {
+        this.crimeReports = crimeReports;
     }
 }
