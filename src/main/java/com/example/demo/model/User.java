@@ -1,7 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDateTime;  
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "users")
@@ -11,16 +11,18 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name; 
+    private String name;
 
     @Column(unique = true)
     private String email;
-    
-    private String password;   
 
-    private String role;
+    private String password;
 
-    private LocalDateTime createdAt;
+    private String role = "ANALYST"; // Default role added
+
+    private LocalDateTime createdAt = LocalDateTime.now(); // Auto timestamp
+
+    // Getters and Setters
 
     public Long getId() {
         return id;
@@ -69,25 +71,4 @@ public class User {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
-    public User() {
-
-    }
-
-    public User(String name, String email, String password, String role) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.role = (role == null) ? "ANALYST" : role;
-    }
-
-    @PrePersist
-    void onCreate() {
-        createdAt = LocalDateTime.now();
-    }
 }
-
-
-
-
-
-

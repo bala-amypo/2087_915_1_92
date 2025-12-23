@@ -1,11 +1,26 @@
 package com.example.demo.service;
 
 import com.example.demo.model.User;
-import java.util.List;
+import com.example.demo.repository.UserRepository;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-public interface UserService {
-    User register(User user);
-    User findByEmail(String email);
-    User findById(Long id);
-    List<User> getAllUsers();
+@Service
+public class UserService {
+
+    private final UserRepository userRepository;
+
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
+
+    @Transactional
+    public User createUser(String name, String email, String password) {
+        User user = new User();
+        user.setName(name);
+        user.setEmail(email);
+        user.setPassword(password);
+        // role and createdAt are already defaulted
+        return userRepository.save(user);
+    }
 }
