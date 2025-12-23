@@ -1,6 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.AnalysisLog;
+import com.example.demo.model.HotspotZone;
 import com.example.demo.repository.AnalysisLogRepository;
 import com.example.demo.repository.HotspotZoneRepository;
 import com.example.demo.service.AnalysisLogService;
@@ -22,9 +23,19 @@ public class AnalysisLogServiceImpl implements AnalysisLogService {
         this.zoneRepo = zoneRepo;
     }
 
-
     @Override
     public List<AnalysisLog> getLogsByZone(Long zoneId) {
         return logRepo.findByZone_Id(zoneId);
+    }
+
+    @Override
+    public AnalysisLog addLog(Long zoneId, String message) {
+        HotspotZone zone = zoneRepo.findById(zoneId).orElse(null);
+
+        AnalysisLog log = new AnalysisLog();
+        log.setZone(zone);
+        log.setMessage(message);
+
+        return logRepo.save(log);
     }
 }
