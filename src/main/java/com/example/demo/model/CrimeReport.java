@@ -22,9 +22,13 @@ public class CrimeReport {
     @JoinColumn(name = "zone_id")
     private HotspotZone zone;
 
-    // ===== getters & setters =====
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+
+    public Long getId() { 
+        return id; 
+    }
+    public void setId(Long id) {
+     this.id = id; 
+     }
 
     public String getCrimeType() { return crimeType; }
     public void setCrimeType(String crimeType) { this.crimeType = crimeType; }

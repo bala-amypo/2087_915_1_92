@@ -19,18 +19,17 @@ public class AnalysisLogController {
         this.logService = logService;
     }
 
-    // --- Add a log to a specific hotspot zone
     @PostMapping("/zone/{zoneId}")
-    public ResponseEntity<AnalysisLog> addLog(@PathVariable Long zoneId,
-                                              @RequestParam String message) {
+    public ResponseEntity<AnalysisLog> addLog(@PathVariable Long zoneId, @RequestParam String message) {
         AnalysisLog log = logService.addLog(zoneId, message);
         return ResponseEntity.ok(log);
     }
 
-    // --- Get all logs for a specific zone
     @GetMapping("/zone/{zoneId}")
     public ResponseEntity<List<AnalysisLog>> getLogsByZone(@PathVariable Long zoneId) {
         List<AnalysisLog> logs = logService.getLogsByZone(zoneId);
         return ResponseEntity.ok(logs);
     }
 }
+
+

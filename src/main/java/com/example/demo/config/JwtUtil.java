@@ -12,7 +12,7 @@ public class JwtUtil {
     private final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
     private final long validity = 1000 * 60 * 60; // 1 hour
 
-    // Generate token
+   
     public String generateToken(Long userId, String email, String role) {
         return Jwts.builder()
                 .setClaims(Map.of(
@@ -26,7 +26,6 @@ public class JwtUtil {
                 .compact();
     }
 
-    // Parse token
     public Claims parseToken(String token) {
         try {
             return Jwts.parserBuilder()
