@@ -1,9 +1,12 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.model.AnalysisLog;
 import com.example.demo.repository.AnalysisLogRepository;
 import com.example.demo.repository.HotspotZoneRepository;
 import com.example.demo.service.AnalysisLogService;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class AnalysisLogServiceImpl implements AnalysisLogService {
@@ -17,5 +20,11 @@ public class AnalysisLogServiceImpl implements AnalysisLogService {
 
         this.logRepo = logRepo;
         this.zoneRepo = zoneRepo;
+    }
+
+
+    @Override
+    public List<AnalysisLog> getLogsByZone(Long zoneId) {
+        return logRepo.findByZone_Id(zoneId);
     }
 }
