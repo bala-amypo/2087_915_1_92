@@ -1,15 +1,13 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.repository.*;
+import com.example.demo.service.PatternDetectionService;
 import org.springframework.stereotype.Service;
 
-@Service
-public class PatternDetectionServiceImpl {
+@Service   // ⚠️ THIS IS VERY IMPORTANT
+public class PatternDetectionServiceImpl implements PatternDetectionService {
 
-    public PatternDetectionServiceImpl(
-            HotspotZoneRepository zoneRepo,
-            CrimeReportRepository reportRepo,
-            PatternDetectionResultRepository resultRepo,
-            AnalysisLogRepository logRepo) {
+    @Override
+    public String detectPattern(Long zoneId) {
+        return "Pattern detected for zone " + zoneId;
     }
 }

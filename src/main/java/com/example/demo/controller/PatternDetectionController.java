@@ -1,10 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.model.PatternDetectionResult;
 import com.example.demo.service.PatternDetectionService;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping("/patterns")
@@ -16,13 +13,8 @@ public class PatternDetectionController {
         this.service = service;
     }
 
-    @PostMapping("/detect/{zoneId}")
-    public PatternDetectionResult detect(@PathVariable Long zoneId) {
+    @GetMapping("/detect/{zoneId}")
+    public String detect(@PathVariable Long zoneId) {
         return service.detectPattern(zoneId);
-    }
-
-    @GetMapping("/zone/{zoneId}")
-    public List<PatternDetectionResult> get(@PathVariable Long zoneId) {
-        return service.getResultsByZone(zoneId);
     }
 }
