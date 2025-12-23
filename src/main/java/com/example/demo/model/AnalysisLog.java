@@ -11,11 +11,11 @@ public class AnalysisLog {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String description;
+    private String message;
+    private LocalDateTime loggedAt;
 
-    private LocalDateTime timestamp = LocalDateTime.now(); // auto timestamp
-
-    // Getters and Setters
+    @ManyToOne
+    private HotspotZone zone;
 
     public Long getId() {
         return id;
@@ -25,19 +25,39 @@ public class AnalysisLog {
         this.id = id;
     }
 
-    public String getDescription() {
-        return description;
+    public String getMessage() {
+        return message;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setMessage(String message) {
+        this.message = message;
     }
 
-    public LocalDateTime getTimestamp() {
-        return timestamp;
+    public LocalDateTime getLoggedAt() {
+        return loggedAt;
     }
 
-    public void setTimestamp(LocalDateTime timestamp) {
-        this.timestamp = timestamp;
+    public void setLoggedAt(LocalDateTime loggedAt) {
+        this.loggedAt = loggedAt;
+    }
+
+    public HotspotZone getZone() {
+        return zone;
+    }
+
+    public void setZone(HotspotZone zone) {
+        this.zone = zone;
+    }
+    public AnalysisLog() {
+        
+    }
+
+    public AnalysisLog(String message, HotspotZone zone) {
+        this.message = message;
+        this.zone = zone;
+    }
+    @PrePersist
+    void logTime() {
+        loggedAt = LocalDateTime.now();
     }
 }
