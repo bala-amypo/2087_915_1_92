@@ -19,7 +19,7 @@ public class PatternDetectionResult {
     @ManyToOne
     private HotspotZone zone;
 
-    // Getters and Setters
+   
     public Integer getCrimeCount() {
         return crimeCount;
     }

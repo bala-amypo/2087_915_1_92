@@ -18,19 +18,39 @@ public class HotspotZone {
     @OneToMany(mappedBy = "zone", cascade = CascadeType.ALL)
     private List<CrimeReport> crimeReports;
 
-    // ===== getters & setters =====
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
+ 
+    public Long getId() {
+         return id; 
+         }
+    public void setId(Long id) { 
+    this.id = id;
+     }
 
-    public String getZoneName() { return zoneName; }
-    public void setZoneName(String zoneName) { this.zoneName = zoneName; }
+    public String getZoneName() { 
+    return zoneName;
+     }
+    public void setZoneName(String zoneName) { 
+    this.zoneName = zoneName; 
+    }
 
-    public double getCenterLat() { return centerLat; }
-    public void setCenterLat(double centerLat) { this.centerLat = centerLat; }
+    public double getCenterLat() { 
+        return centerLat; 
+        }
+    public void setCenterLat(double centerLat) { 
+        this.centerLat = centerLat;
+         }
 
-    public double getCenterLong() { return centerLong; }
-    public void setCenterLong(double centerLong) { this.centerLong = centerLong; }
+    public double getCenterLong() {
+         return centerLong;
+          }
+    public void setCenterLong(double centerLong) { 
+        this.centerLong = centerLong;
+         }
 
-    public String getSeverityLevel() { return severityLevel; }
-    public void setSeverityLevel(String severityLevel) { this.severityLevel = severityLevel; }
+    public String getSeverityLevel() {
+         return severityLevel; 
+         }
+    public void setSeverityLevel(String severityLevel) { 
+        this.severityLevel = severityLevel;
+         }
 }
