@@ -1,70 +1,45 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import java.time.LocalDate;
 
 @Entity
-@Table(name = "pattern_detection_results")
 public class PatternDetectionResult {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    private HotspotZone zone;
-
-    private LocalDate analysisDate;
-    private Integer crimeCount;
+    private Long zoneId;
+    private int crimeCount;
     private String detectedPattern;
 
+    // ===== GETTERS =====
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getZoneId() {
+        return zoneId;
     }
 
-    public HotspotZone getZone() {
-        return zone;
-    }
-
-    public void setZone(HotspotZone zone) {
-        this.zone = zone;
-    }
-
-    public LocalDate getAnalysisDate() {
-        return analysisDate;
-    }
-
-    public void setAnalysisDate(LocalDate analysisDate) {
-        this.analysisDate = analysisDate;
-    }
-
-    public Integer getCrimeCount() {
+    public int getCrimeCount() {
         return crimeCount;
-    }
-
-    public void setCrimeCount(Integer crimeCount) {
-        this.crimeCount = crimeCount;
     }
 
     public String getDetectedPattern() {
         return detectedPattern;
     }
 
-    public void setDetectedPattern(String detectedPattern) {
-        this.detectedPattern = detectedPattern;
-    }
-    public PatternDetectionResult() {
-
+    // ===== SETTERS (IMPORTANT) =====
+    public void setZoneId(Long zoneId) {
+        this.zoneId = zoneId;
     }
 
-    public PatternDetectionResult(HotspotZone zone,LocalDate analysisDate,Integer crimeCount,String detectedPattern) {
-        this.zone = zone;
-        this.analysisDate = analysisDate;
+    public void setCrimeCount(int crimeCount) {
         this.crimeCount = crimeCount;
+    }
+
+    public void setDetectedPattern(String detectedPattern) {
         this.detectedPattern = detectedPattern;
     }
 }
