@@ -1,20 +1,23 @@
 package com.example.demo.controller;
 
+import com.example.demo.model.PatternDetectionResult;   // ✅ IMPORTANT
 import com.example.demo.service.PatternDetectionService;
+
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/patterns")
+@RequestMapping("/pattern")
 public class PatternDetectionController {
 
-    private final PatternDetectionService service;
+    private final PatternDetectionService patternDetectionService;
 
-    public PatternDetectionController(PatternDetectionService service) {
-        this.service = service;
+    // ✅ constructor injection (variable error fix)
+    public PatternDetectionController(PatternDetectionService patternDetectionService) {
+        this.patternDetectionService = patternDetectionService;
     }
 
     @GetMapping("/detect/{zoneId}")
-    public String detect(@PathVariable Long zoneId) {
-        return service.detectPattern(zoneId);
+    public PatternDetectionResult detect(@PathVariable Long zoneId) {
+        return patternDetectionService.detectPattern(zoneId);
     }
 }
