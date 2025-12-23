@@ -2,22 +2,37 @@ package com.example.demo.util;
 
 public class CoordinateUtil {
 
-    // Validate latitude
-    public static boolean isValidLatitude(Double lat) {
-        return lat != null && lat >= -90.0 && lat <= 90.0;
+    private CoordinateUtil() {
+        // private constructor to prevent instantiation
     }
 
-    // Validate longitude
-    public static boolean isValidLongitude(Double lon) {
-        return lon != null && lon >= -180.0 && lon <= 180.0;
+    /**
+     * Validate latitude value.
+     * @param latitude latitude to validate
+     * @return true if valid, else false
+     */
+    public static boolean isValidLatitude(Double latitude) {
+        if (latitude == null) return false;
+        return latitude >= -90.0 && latitude <= 90.0;
     }
 
-    // Check if coordinates are within a bounding box
-    public static boolean isWithinBounds(Double lat, Double lon,
-                                         Double minLat, Double maxLat,
-                                         Double minLon, Double maxLon) {
-        return isValidLatitude(lat) && isValidLongitude(lon)
-                && lat >= minLat && lat <= maxLat
-                && lon >= minLon && lon <= maxLon;
+    /**
+     * Validate longitude value.
+     * @param longitude longitude to validate
+     * @return true if valid, else false
+     */
+    public static boolean isValidLongitude(Double longitude) {
+        if (longitude == null) return false;
+        return longitude >= -180.0 && longitude <= 180.0;
+    }
+
+    /**
+     * Validate both latitude and longitude.
+     * @param latitude latitude
+     * @param longitude longitude
+     * @return true if both valid, else false
+     */
+    public static boolean isValidCoordinate(Double latitude, Double longitude) {
+        return isValidLatitude(latitude) && isValidLongitude(longitude);
     }
 }

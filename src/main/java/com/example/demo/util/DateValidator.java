@@ -5,23 +5,37 @@ import java.time.LocalDateTime;
 
 public class DateUtil {
 
-    // Check if date/time is in the future
-    public static boolean isFuture(LocalDateTime dateTime) {
-        return dateTime != null && dateTime.isAfter(LocalDateTime.now());
+    private DateUtil() {
+        // private constructor to prevent instantiation
     }
 
-    // Check if date is today
+    /**
+     * Check if a given date is not in the future.
+     * @param date LocalDate to validate
+     * @return true if date is today or in the past
+     */
+    public static boolean isNotFutureDate(LocalDate date) {
+        if (date == null) return false;
+        return !date.isAfter(LocalDate.now());
+    }
+
+    /**
+     * Check if a given datetime is not in the future.
+     * @param dateTime LocalDateTime to validate
+     * @return true if dateTime is now or in the past
+     */
+    public static boolean isNotFutureDateTime(LocalDateTime dateTime) {
+        if (dateTime == null) return false;
+        return !dateTime.isAfter(LocalDateTime.now());
+    }
+
+    /**
+     * Check if a given date is today.
+     * @param date LocalDate to validate
+     * @return true if date is today
+     */
     public static boolean isToday(LocalDate date) {
-        return date != null && date.equals(LocalDate.now());
-    }
-
-    // Convert LocalDateTime to LocalDate
-    public static LocalDate toLocalDate(LocalDateTime dateTime) {
-        return dateTime != null ? dateTime.toLocalDate() : null;
-    }
-
-    // Convert LocalDate to LocalDateTime at start of day
-    public static LocalDateTime toStartOfDay(LocalDate date) {
-        return date != null ? date.atStartOfDay() : null;
+        if (date == null) return false;
+        return date.equals(LocalDate.now());
     }
 }
