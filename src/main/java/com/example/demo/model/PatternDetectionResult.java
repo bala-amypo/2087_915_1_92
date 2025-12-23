@@ -1,6 +1,7 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 public class PatternDetectionResult {
@@ -9,37 +10,23 @@ public class PatternDetectionResult {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Long zoneId;
-    private int crimeCount;
-    private String detectedPattern;
+    private String patternType;
+    private LocalDate analysisDate;
 
-    // ===== GETTERS =====
-    public Long getId() {
-        return id;
-    }
+    @ManyToOne
+    @JoinColumn(name = "zone_id")
+    private HotspotZone zone;
 
-    public Long getZoneId() {
-        return zoneId;
-    }
+    // ===== getters & setters =====
+    public Long getId() { return id; }
+    public void setId(Long id) { this.id = id; }
 
-    public int getCrimeCount() {
-        return crimeCount;
-    }
+    public String getPatternType() { return patternType; }
+    public void setPatternType(String patternType) { this.patternType = patternType; }
 
-    public String getDetectedPattern() {
-        return detectedPattern;
-    }
+    public LocalDate getAnalysisDate() { return analysisDate; }
+    public void setAnalysisDate(LocalDate analysisDate) { this.analysisDate = analysisDate; }
 
-    // ===== SETTERS (IMPORTANT) =====
-    public void setZoneId(Long zoneId) {
-        this.zoneId = zoneId;
-    }
-
-    public void setCrimeCount(int crimeCount) {
-        this.crimeCount = crimeCount;
-    }
-
-    public void setDetectedPattern(String detectedPattern) {
-        this.detectedPattern = detectedPattern;
-    }
+    public HotspotZone getZone() { return zone; }
+    public void setZone(HotspotZone zone) { this.zone = zone; }
 }
