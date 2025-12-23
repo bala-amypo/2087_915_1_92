@@ -7,6 +7,7 @@ import com.example.demo.repository.HotspotZoneRepository;
 import com.example.demo.service.AnalysisLogService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -24,8 +25,10 @@ public class AnalysisLogServiceImpl implements AnalysisLogService {
     public AnalysisLog addLog(Long zoneId, String message) {
         HotspotZone zone = zoneRepo.findById(zoneId)
                 .orElseThrow(() -> new RuntimeException("Zone not found"));
-
-        AnalysisLog log = new AnalysisLog(zone, message);
+        AnalysisLog log = new AnalysisLog();
+        log.setZone(zone);          // Correct type: HotspotZone
+        log.setMessage(message);    // Correct type: String
+        log.setLoggedAt(LocalDateTime.now());
         return logRepo.save(log);
     }
 
