@@ -21,7 +21,7 @@ public class UserServiceImpl implements UserService {
         if (userRepo.existsByEmail(user.getEmail())) {
             throw new RuntimeException("Email already exists");
         }
-        // Simple hashing for demo (replace with BCrypt in real project)
+       
         user.setPassword("hashed_" + user.getPassword());
         if(user.getRole()==null) user.setRole("ANALYST");
         return userRepo.save(user);

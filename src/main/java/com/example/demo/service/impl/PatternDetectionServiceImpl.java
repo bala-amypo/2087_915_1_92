@@ -40,7 +40,7 @@ public class PatternDetectionServiceImpl implements PatternDetectionService {
 
         HotspotZone zone = optionalZone.get();
 
-        // Example: find reports within +/- 0.5 lat/lon
+       
         double latMin = zone.getCenterLat() - 0.5;
         double latMax = zone.getCenterLat() + 0.5;
         double lonMin = zone.getCenterLong() - 0.5;
@@ -49,7 +49,7 @@ public class PatternDetectionServiceImpl implements PatternDetectionService {
         List<CrimeReport> reports = reportRepo.findByLatLongRange(latMin, latMax, lonMin, lonMax);
 
         PatternDetectionResult result = new PatternDetectionResult();
-        result.setZone(zone); // associate zone
+        result.setZone(zone); 
         result.setCrimeCount(reports.size());
         
         if (reports.isEmpty()) {

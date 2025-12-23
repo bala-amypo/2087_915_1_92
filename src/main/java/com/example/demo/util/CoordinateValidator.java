@@ -16,8 +16,8 @@ public class CoordinateValidator {
 
    
     public static void main(String[] args) {
-        System.out.println(isValidCoordinate(12.0, 77.0)); // true
-        System.out.println(isValidCoordinate(-91.0, 77.0)); // false
-        System.out.println(isValidCoordinate(45.0, 190.0)); // false
+        System.out.println(isValidCoordinate(12.0, 77.0)); 
+        System.out.println(isValidCoordinate(-91.0, 77.0));
+        System.out.println(isValidCoordinate(45.0, 190.0)); 
     }
 }

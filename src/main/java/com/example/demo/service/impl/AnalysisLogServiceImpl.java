@@ -26,8 +26,8 @@ public class AnalysisLogServiceImpl implements AnalysisLogService {
         HotspotZone zone = zoneRepo.findById(zoneId)
                 .orElseThrow(() -> new RuntimeException("Zone not found"));
         AnalysisLog log = new AnalysisLog();
-        log.setZone(zone);          // Correct type: HotspotZone
-        log.setMessage(message);    // Correct type: String
+        log.setZone(zone);          
+        log.setMessage(message);  
         log.setLoggedAt(LocalDateTime.now());
         return logRepo.save(log);
     }
