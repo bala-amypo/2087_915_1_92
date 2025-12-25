@@ -1,18 +1,12 @@
+
 package com.example.demo.model;
 
 import jakarta.persistence.*;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "pattern_detection_results")
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class PatternDetectionResult {
-    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -22,8 +16,34 @@ public class PatternDetectionResult {
     private HotspotZone zone;
     
     private String detectedPattern;
-    
     private Integer crimeCount;
+    private LocalDate analysisDate;
     
-    private LocalDate analysisDate = LocalDate.now();
+    public PatternDetectionResult() {
+
+    }
+    
+    public Long getId() {
+     return id; 
+     }
+    public void setId(Long id) { 
+    this.id = id;
+     }
+    
+    public HotspotZone getZone() {
+         return zone; 
+         }
+    public void setZone(HotspotZone zone) {
+     this.zone = zone; 
+     }
+    
+    public String getDetectedPattern() {
+         return detectedPattern; }
+    public void setDetectedPattern(String detectedPattern) { this.detectedPattern = detectedPattern; }
+    
+    public Integer getCrimeCount() { return crimeCount; }
+    public void setCrimeCount(Integer crimeCount) { this.crimeCount = crimeCount; }
+    public LocalDate getAnalysisDate() { return analysisDate; }
+    public void setAnalysisDate(LocalDate analysisDate) { this.analysisDate = analysisDate; }
 }
+
