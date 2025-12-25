@@ -1,35 +1,32 @@
 package com.example.demo.model;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 
 @Entity
 @Table(name = "hotspot_zones")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class HotspotZone {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String zoneName;
     
+    @Column(nullable = false)
     private Double centerLat;
+    
+    @Column(nullable = false)
     private Double centerLong;
-    private String severityLevel;
     
-    public HotspotZone() {}
+    private Double radius = 1.0;
     
-    public Long getId() { return id; }
-    public void setId(Long id) { this.id = id; }
-    
-    public String getZoneName() { return zoneName; }
-    public void setZoneName(String zoneName) { this.zoneName = zoneName; }
-    
-    public Double getCenterLat() { return centerLat; }
-    public void setCenterLat(Double centerLat) { this.centerLat = centerLat; }
-    
-    public Double getCenterLong() { return centerLong; }
-    public void setCenterLong(Double centerLong) { this.centerLong = centerLong; }
-    
-    public String getSeverityLevel() { return severityLevel; }
-    public void setSeverityLevel(String severityLevel) { this.severityLevel = severityLevel; }
+    @Column(nullable = false)
+    private String severityLevel = "LOW";
 }
