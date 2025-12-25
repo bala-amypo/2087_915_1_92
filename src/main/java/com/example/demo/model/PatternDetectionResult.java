@@ -38,12 +38,23 @@ public class PatternDetectionResult {
      }
     
     public String getDetectedPattern() {
-         return detectedPattern; }
-    public void setDetectedPattern(String detectedPattern) { this.detectedPattern = detectedPattern; }
+         return detectedPattern; 
+         }
+    public void setDetectedPattern(String detectedPattern) {
+         this.detectedPattern = detectedPattern; 
+         }
     
-    public Integer getCrimeCount() { return crimeCount; }
-    public void setCrimeCount(Integer crimeCount) { this.crimeCount = crimeCount; }
-    public LocalDate getAnalysisDate() { return analysisDate; }
-    public void setAnalysisDate(LocalDate analysisDate) { this.analysisDate = analysisDate; }
+    public Integer getCrimeCount() {
+         return crimeCount;
+          }
+    public void setCrimeCount(Integer crimeCount) {
+     this.crimeCount = crimeCount; 
+     }
+    public LocalDate getAnalysisDate() {
+         return analysisDate; 
+         }
+    public void setAnalysisDate(LocalDate analysisDate) {
+         this.analysisDate = analysisDate;
+          }
 }
 
