@@ -33,7 +33,7 @@ public class JwtFilter extends OncePerRequestFilter {
                 var claims = jwtUtil.parseToken(token);
                 email = claims.get("email", String.class);
             } catch (Exception e) {
-                // Invalid token
+                
             }
         }
         
