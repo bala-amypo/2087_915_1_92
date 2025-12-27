@@ -1,6 +1,6 @@
 
 package com.example.demo.model;
-
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -18,8 +18,9 @@ public class CrimeReport {
     private Double longitude;
     private LocalDateTime occurredAt;
  
-  
-private LocalDateTime reportedAt;
+  @Column(name = "reported_at", nullable = false, updatable = false)
+  @CreationTimestamp
+  private LocalDateTime reportedAt;
     
     public CrimeReport() {
 
