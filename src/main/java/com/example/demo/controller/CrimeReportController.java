@@ -18,8 +18,11 @@ public class CrimeReportController {
         return crimeReportService.addReport(report);
     }
     
-    @GetMapping
-    public List<CrimeReport> getAllReports() {
-        return crimeReportService.getAllReports();
-    }
+    
+}
+
+
+@GetMapping("/reports")
+public List<CrimeReport> getReports() {
+    return crimeReportService.getAllReports();
 }
