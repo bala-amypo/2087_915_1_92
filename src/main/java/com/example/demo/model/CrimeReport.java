@@ -18,8 +18,8 @@ public class CrimeReport {
     private Double longitude;
     private LocalDateTime occurredAt;
  
-@Column(name = "reported_at", nullable = false, updatable = false)
-@CreationTimestamp
+   @Column(name = "reported_at", nullable = false, updatable = false)
+   @CreationTimestamp
 private LocalDateTime reportedAt;
     
     public CrimeReport() {
