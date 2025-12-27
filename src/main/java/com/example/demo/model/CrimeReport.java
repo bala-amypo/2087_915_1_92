@@ -17,6 +17,7 @@ public class CrimeReport {
     private Double longitude;
     private LocalDateTime occurredAt;
     
+    
     public CrimeReport() {
 
     }
