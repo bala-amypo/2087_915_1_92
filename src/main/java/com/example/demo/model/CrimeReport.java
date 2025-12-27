@@ -1,5 +1,6 @@
 
 package com.example.demo.model;
+import org.hibernate.annotations.CreationTimestamp;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
@@ -66,5 +67,13 @@ private LocalDateTime reportedAt;
     public void setOccurredAt(LocalDateTime occurredAt) {
          this.occurredAt = occurredAt;
           }
+          public LocalDateTime getReportedAt() {
+    return reportedAt;
+}
+
+public void setReportedAt(LocalDateTime reportedAt) {
+    this.reportedAt = reportedAt;
+}
+
 }
 
