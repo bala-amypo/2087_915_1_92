@@ -12,7 +12,7 @@ public class AnalysisLog {
     
     @ManyToOne
     @JoinColumn(name = "zone_id")
-    private HotspotZone hotspotZone;
+    private HotspotZone zone;
     
     private String message;
     private LocalDateTime loggedAt = LocalDateTime.now();
